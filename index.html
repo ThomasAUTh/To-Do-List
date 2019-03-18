@@ -79,9 +79,8 @@
   <div class="container">
     <h1>TodoList</h1>
 
-    <form>
-      <input type="text" id="new-todo" placeholder="What needs to be done?" onsubmit="submitTodo(); return false>
-      
+    <form onsubmit="submitTodo(); return false">
+    <input type="text" id="new-todo" placeholder="What needs to be done?">
     </form>
 
     <ul id="todolist">
@@ -102,7 +101,16 @@
   </div>
 
   <script>
-function updateCounters() {
+  // select the element containing the count
+  var totalCount = document.getElementById('total-count');
+
+  // count the number of todo's by their class name
+  var totalTodos = document.getElementsByClassName("todo").length;
+
+  // update the HTML inside the counter element
+  totalCount.innerHTML = totalTodos;
+
+  function updateCounters() {
   // Total number of todos
   var totalCount = document.getElementById('total-count');
   var totalTodos = document.getElementsByClassName("todo").length;
@@ -145,7 +153,7 @@ function submitTodo() {
   inputField.value = null;
 
   updateCounters();
-  
+
   function createTodo(title) {
   // create a list item
   var listItem = document.createElement("li");
@@ -182,7 +190,7 @@ function submitTodo() {
 function nextTodoId() {
   return document.getElementsByClassName("todo").length + 1;
 }
-  }
+}
   </script>
 
 </body>
